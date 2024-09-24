@@ -54,3 +54,12 @@ img {
     height: auto;
     margin-top: 20px;
 }
+@media (max-width: 768px) {
+    main {
+        padding: 10px;
+    }
+    img {
+        width: 100%;
+    }
+}
+
