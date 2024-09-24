@@ -62,4 +62,11 @@ img {
         width: 100%;
     }
 }
+#deleteVazamento {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+}
 
