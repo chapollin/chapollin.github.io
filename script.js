@@ -82,3 +82,31 @@ function excluirVazamento(index) {
 
 // Exibir vazamentos ao carregar a página
 exibirVazamentos();
+
+// URL do arquivo JSON no seu repositório
+const url = 'https://raw.githubusercontent.com/SEU_USUARIO/NOME_DO_REPOSITORIO/main/vazamentos.json';
+
+// Função para buscar e exibir os vazamentos
+async function buscarVazamentos() {
+    try {
+        const response = await fetch(url);
+        const vazamentos = await response.json();
+
+        const vazamentosList = document.getElementById('vazamentos');
+        vazamentosList.innerHTML = ''; // Limpa a lista existente
+
+        vazamentos.forEach((vazamento, index) => {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <strong>Vazamento ${index + 1}:</strong> ${vazamento.descricao}<br>
+                <img src="${vazamento.imagem}" alt="Imagem do vazamento" style="width: 100%; max-width: 300px;">
+            `;
+            vazamentosList.appendChild(li);
+        });
+    } catch (error) {
+        console.error('Erro ao buscar os vazamentos:', error);
+    }
+}
+
+// Chamar a função ao carregar a página
+window.onload = buscarVazamentos;
