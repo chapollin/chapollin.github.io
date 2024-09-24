@@ -8,21 +8,30 @@
 </head>
 <body>
     <header>
-        <h1>Problemas na Farinheira</h1 >
+        <h1>Problemas na Farinheira</h1>
         <nav>
             <a href="index.html">Home</a>
             <a href="Vazamento.html">Vazamentos</a>
         </nav>
     </header>
-    <main>
+    <main id="main-content" style="display: none;">
         <section class="banner">
             <img src="https://i.postimg.cc/76x8Cbzt/1727206730289.jpg" alt="Foto da farinheira">
         </section>
         <section class="descricao">
             <h2>Sobre a Farinheira</h2>
             <p>A farinheira da nossa fábrica tem enfrentado uma série de desafios, incluindo vazamentos e rompimentos que impactam a produção. Na aba de Vazamentos, será possível acompanhar as ocorrências e os detalhes relacionados a cada situação. Além disso, na aba de Perdas, monitoraremos as perdas relacionadas ao descarte de farinha por diversos motivos.</p>
-
         </section>
     </main>
+
+    <script>
+        const password = prompt("Digite a senha para acessar a página:");
+        if (password === "marcos") {
+            document.getElementById("main-content").style.display = "block";
+        } else {
+            alert("Senha incorreta. Acesso negado.");
+            window.location.href = "https://chapollin.github.io/"; // Redireciona para a página inicial se a senha estiver incorreta
+        }
+    </script>
 </body>
 </html>
