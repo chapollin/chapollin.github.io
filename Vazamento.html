@@ -14,7 +14,7 @@
             <a href="Vazamento.html">Vazamentos</a>
         </nav>
     </header>
-    <main>
+    <main style="display: none;"> <!-- Oculta o main inicialmente -->
         <section class="vazamentos-list">
             <h2>Lista de Vazamentos</h2>
             <ul id="vazamentos"></ul>
@@ -42,7 +42,7 @@
         submitButton.textContent = "Entrar";
         submitButton.onclick = () => {
             if (passwordInput.value === "marcos") {
-                document.getElementById("main-content").style.display = "block";
+                document.querySelector("main").style.display = "block"; // Exibe o conteúdo principal
                 passwordContainer.style.display = "none"; // Esconder o campo de senha
             } else {
                 alert("Senha incorreta. Acesso negado.");
