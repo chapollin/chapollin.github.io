@@ -7,7 +7,6 @@ const addVazamentoButton = document.getElementById('addVazamento');
 const detalhesSection = document.getElementById('detalhesVazamento');
 const vazamentoImage = document.getElementById('vazamentoImage');
 const deleteVazamentoButton = document.getElementById('deleteVazamento');
-const inputFile = document.getElementById('inputFile');
 
 // Variável para controlar se os detalhes estão visíveis ou não
 let detalhesVisiveis = false;
@@ -18,7 +17,7 @@ function exibirVazamentos() {
     vazamentosList.innerHTML = ''; // Limpa a lista de vazamentos
     vazamentos.forEach((vazamento, index) => {
         const li = document.createElement('li');
-        li.textContent = `Vazamento ${index + 1} - ${vazamento.descricao}`;
+        li.innerHTML = `Vazamento ${index + 1} - ${vazamento.descricao}`;
         li.addEventListener('click', () => alternarDetalhesVazamento(index));
         vazamentosList.appendChild(li);
     });
@@ -41,38 +40,17 @@ function alternarDetalhesVazamento(index) {
     deleteVazamentoButton.onclick = () => excluirVazamento(index);
 }
 
-// Função para converter o arquivo em Base64
-function fileToBase64(file, callback) {
-    const reader = new FileReader();
-    reader.onload = function(event) {
-        callback(event.target.result); // Chama o callback com o resultado (Base64)
-    };
-    reader.readAsDataURL(file); // Lê o arquivo como URL de dados
-}
-
 // Função para adicionar um novo vazamento
 addVazamentoButton.addEventListener('click', () => {
     const descricao = prompt('Descreva o vazamento:');
-    if (descricao) {
-        // Abrir seletor de arquivo
-        inputFile.click();
-        
-        inputFile.onchange = () => {
-            const file = inputFile.files[0];
-            if (file) {
-                // Converter o arquivo para Base64
-                fileToBase64(file, (base64Data) => {
-                    vazamentos.push({ descricao, imagem: base64Data });
-                    localStorage.setItem('vazamentos', JSON.stringify(vazamentos));
-                    exibirVazamentos();
-                    alert('Vazamento adicionado com sucesso!'); // Feedback ao usuário
-                });
-            } else {
-                alert('Nenhum arquivo selecionado.'); // Mensagem de erro
-            }
-        };
+    const imagem = prompt('Insira o link da imagem do vazamento:'); // Adiciona link da imagem
+    if (descricao && imagem) {
+        vazamentos.push({ descricao, imagem });
+        localStorage.setItem('vazamentos', JSON.stringify(vazamentos));
+        exibirVazamentos();
+        alert('Vazamento adicionado com sucesso!'); // Feedback ao usuário
     } else {
-        alert('A descrição não pode estar vazia.'); // Mensagem de erro
+        alert('A descrição ou imagem não podem estar vazias.'); // Mensagem de erro
     }
 });
 
