@@ -69,4 +69,31 @@ img {
     border: none;
     cursor: pointer;
 }
+/* Estilos para o campo de senha */
+input[type="password"] {
+    width: 100%; /* Largura total do campo */
+    max-width: 300px; /* Limite máximo da largura */
+    padding: 10px; /* Espaçamento interno */
+    margin: 20px auto; /* Margem superior e inferior */
+    border: 1px solid #ddd; /* Borda clara */
+    border-radius: 5px; /* Bordas arredondadas */
+    font-size: 16px; /* Tamanho da fonte */
+}
+
+/* Estilos para o botão de envio */
+button {
+    background-color: #333; /* Cor de fundo escura */
+    color: white; /* Cor do texto */
+    padding: 10px 20px; /* Espaçamento interno */
+    border: none; /* Remove a borda padrão */
+    border-radius: 5px; /* Bordas arredondadas */
+    cursor: pointer; /* Cursor de ponteiro ao passar o mouse */
+    font-size: 16px; /* Tamanho da fonte */
+    display: block; /* Exibir como bloco */
+    margin: 0 auto; /* Centralizar o botão */
+}
+
+button:hover {
+    background-color: #555; /* Cor de fundo ao passar o mouse */
+}
 
