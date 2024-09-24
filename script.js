@@ -62,12 +62,17 @@ addVazamentoButton.addEventListener('click', () => {
             if (file) {
                 // Converter o arquivo para Base64
                 fileToBase64(file, (base64Data) => {
-                    vazamentos.push({ descricao, imagem: base64Data }); // Adicionar vazamento com imagem
-                    localStorage.setItem('vazamentos', JSON.stringify(vazamentos)); // Salva no localStorage
-                    exibirVazamentos(); // Atualiza a lista de vazamentos na tela
+                    vazamentos.push({ descricao, imagem: base64Data });
+                    localStorage.setItem('vazamentos', JSON.stringify(vazamentos));
+                    exibirVazamentos();
+                    alert('Vazamento adicionado com sucesso!'); // Feedback ao usuário
                 });
+            } else {
+                alert('Nenhum arquivo selecionado.'); // Mensagem de erro
             }
         };
+    } else {
+        alert('A descrição não pode estar vazia.'); // Mensagem de erro
     }
 });
 
