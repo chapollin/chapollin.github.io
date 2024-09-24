@@ -72,7 +72,7 @@ addVazamentoButton.addEventListener('click', () => {
 });
 
 // Função para excluir o vazamento
-function excluirVazamento(index) {
+function excluirVazamento(index){
     vazamentos.splice(index, 1);
     localStorage.setItem('vazamentos', JSON.stringify(vazamentos));
     exibirVazamentos();
