@@ -19,8 +19,6 @@
             <h2>Lista de Vazamentos</h2>
             <ul id="vazamentos"></ul>
             <button id="addVazamento">Adicionar Vazamento</button>
-            <!-- Campo de input escondido para o usuário selecionar arquivos -->
-            <input type="file" id="inputFile" style="display: none;">
         </section>
         <section id="detalhesVazamento" class="detalhes">
             <h2>Detalhes do Vazamento</h2>
@@ -31,35 +29,6 @@
 
     <script src="script.js"></script>
     <script>
-        // URL do arquivo JSON no seu repositório
-        const url = 'https://raw.githubusercontent.com/chapollin/chapollin.github.io/vazamentos.json';
-
-        // Função para buscar e exibir os vazamentos
-        async function buscarVazamentos() {
-            try {
-                const response = await fetch(url);
-                const vazamentos = await response.json();
-
-                const vazamentosList = document.getElementById('vazamentos');
-                vazamentosList.innerHTML = ''; // Limpa a lista existente
-
-                vazamentos.forEach((vazamento, index) => {
-                    const li = document.createElement('li');
-                    li.innerHTML = `
-                        <strong>Vazamento ${index + 1}:</strong> ${vazamento.descricao}<br>
-                        <img src="${vazamento.imagem}" alt="Imagem do vazamento" style="width: 100%; max-width: 300px;">
-                    `;
-                    vazamentosList.appendChild(li);
-                });
-            } catch (error) {
-                console.error('Erro ao buscar os vazamentos:', error);
-            }
-        }
-
-        // Chamar a função ao carregar a página
-        window.onload = buscarVazamentos;
-    </script>
-<script>
         const password = prompt("Digite a senha para acessar a página:");
         if (password === "marcos") {
             document.getElementById("main-content").style.display = "block";
