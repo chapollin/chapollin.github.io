@@ -7,6 +7,7 @@ const addVazamentoButton = document.getElementById('addVazamento');
 const detalhesSection = document.getElementById('detalhesVazamento');
 const vazamentoImage = document.getElementById('vazamentoImage');
 const deleteVazamentoButton = document.getElementById('deleteVazamento');
+const inputFile = document.getElementById('inputFile');
 
 // Variável para controlar se os detalhes estão visíveis ou não
 let detalhesVisiveis = false;
@@ -40,13 +41,34 @@ function alternarDetalhesVazamento(index) {
     deleteVazamentoButton.onclick = () => excluirVazamento(index);
 }
 
+// Função para converter o arquivo em Base64
+function fileToBase64(file, callback) {
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        callback(event.target.result);
+    };
+    reader.readAsDataURL(file);
+}
+
 // Função para adicionar um novo vazamento
 addVazamentoButton.addEventListener('click', () => {
     const descricao = prompt('Descreva o vazamento:');
-    const imagem = prompt('Insira o link da imagem ou vídeo do vazamento:');
-    vazamentos.push({ descricao, imagem });
-    localStorage.setItem('vazamentos', JSON.stringify(vazamentos));
-    exibirVazamentos();
+    if (descricao) {
+        // Abrir seletor de arquivo
+        inputFile.click();
+        
+        inputFile.onchange = () => {
+            const file = inputFile.files[0];
+            if (file) {
+                // Converter o arquivo para Base64
+                fileToBase64(file, (base64Data) => {
+                    vazamentos.push({ descricao, imagem: base64Data });
+                    localStorage.setItem('vazamentos', JSON.stringify(vazamentos));
+                    exibirVazamentos();
+                });
+            }
+        };
+    }
 });
 
 // Função para excluir o vazamento
