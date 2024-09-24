@@ -15,7 +15,7 @@ let vazamentoAtualIndex = null; // Variável para controlar o índice do vazamen
 
 // Função para exibir a lista de vazamentos
 function exibirVazamentos() {
-    vazamentosList.innerHTML = '';
+    vazamentosList.innerHTML = ''; // Limpa a lista de vazamentos
     vazamentos.forEach((vazamento, index) => {
         const li = document.createElement('li');
         li.textContent = `Vazamento ${index + 1} - ${vazamento.descricao}`;
@@ -45,9 +45,9 @@ function alternarDetalhesVazamento(index) {
 function fileToBase64(file, callback) {
     const reader = new FileReader();
     reader.onload = function(event) {
-        callback(event.target.result);
+        callback(event.target.result); // Chama o callback com o resultado (Base64)
     };
-    reader.readAsDataURL(file);
+    reader.readAsDataURL(file); // Lê o arquivo como URL de dados
 }
 
 // Função para adicionar um novo vazamento
@@ -62,9 +62,9 @@ addVazamentoButton.addEventListener('click', () => {
             if (file) {
                 // Converter o arquivo para Base64
                 fileToBase64(file, (base64Data) => {
-                    vazamentos.push({ descricao, imagem: base64Data });
-                    localStorage.setItem('vazamentos', JSON.stringify(vazamentos));
-                    exibirVazamentos();
+                    vazamentos.push({ descricao, imagem: base64Data }); // Adicionar vazamento com imagem
+                    localStorage.setItem('vazamentos', JSON.stringify(vazamentos)); // Salva no localStorage
+                    exibirVazamentos(); // Atualiza a lista de vazamentos na tela
                 });
             }
         };
@@ -72,12 +72,12 @@ addVazamentoButton.addEventListener('click', () => {
 });
 
 // Função para excluir o vazamento
-function excluirVazamento(index){
-    vazamentos.splice(index, 1);
-    localStorage.setItem('vazamentos', JSON.stringify(vazamentos));
-    exibirVazamentos();
-    detalhesSection.style.display = 'none';
-    detalhesVisiveis = false;
+function excluirVazamento(index) {
+    vazamentos.splice(index, 1); // Remove o vazamento do array
+    localStorage.setItem('vazamentos', JSON.stringify(vazamentos)); // Atualiza o localStorage
+    exibirVazamentos(); // Reexibe a lista de vazamentos
+    detalhesSection.style.display = 'none'; // Esconde a seção de detalhes
+    detalhesVisiveis = false; // Define que os detalhes estão ocultos
 }
 
 // Exibir vazamentos ao carregar a página
