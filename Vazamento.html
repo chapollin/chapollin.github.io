@@ -28,32 +28,6 @@
     </main>
 
     <script src="script.js"></script>
-    <script>
-    // Função para solicitar a senha
-    function solicitarSenha() {
-        const passwordInput = document.createElement("input");
-        passwordInput.type = "password"; // Define o tipo como "password"
-        passwordInput.placeholder = "Digite a senha";
-        
-        const passwordContainer = document.createElement("div");
-        passwordContainer.appendChild(passwordInput);
-        
-        const submitButton = document.createElement("button");
-        submitButton.textContent = "Entrar";
-        submitButton.onclick = () => {
-            if (passwordInput.value === "marcos") {
-                document.querySelector("main").style.display = "block"; // Exibe o conteúdo principal
-                passwordContainer.style.display = "none"; // Esconder o campo de senha
-            } else {
-                alert("Senha incorreta. Acesso negado.");
-                window.location.href = "https://chapollin.github.io/"; // Redireciona para a página inicial se a senha estiver incorreta
-            }
-        };
-
-    }
-
-    // Chamar a função ao carregar a página
-    window.onload = solicitarSenha;
 </script>
 </body>
 </html>
